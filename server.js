@@ -8,6 +8,7 @@ const clienteRouter = require('./app/routers/cliente.router.js');
 const proveedorRouter = require('./app/routers/proveedor.router.js');
 const productoRouter = require('./app/routers/producto.router.js');
 const facturaRouter = require('./app/routers/factura.router.js');
+const detalleRouter = require('./app/routers/detalle.router.js');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use('/', clienteRouter);
 app.use('/', proveedorRouter);
 app.use('/', productoRouter);
 app.use('/', facturaRouter); 
+app.use('/', detalleRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenidos UMG" });
