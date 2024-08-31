@@ -91,7 +91,7 @@ exports.updateById = async (req, res) => {
             
             if (!result) {
                 res.status(500).json({
-                    message: "No se puede actualizar un cliente con id = " + req.params.id,
+                    message: "No se puede actualizar el cliente con id = " + req.params.id,
                     error: "No se pudo actualizar el cliente",
                 });
             };
@@ -103,7 +103,7 @@ exports.updateById = async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({
-            message: "No se puede actualizar un cliente con id = " + req.params.id,
+            message: "No se puede actualizar el cliente con id = " + req.params.id,
             error: error.message
         });
     }
@@ -128,7 +128,7 @@ exports.deleteById = async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({
-            message: "No se puede eliminar un cliente con id = " + req.params.id,
+            message: "No se puede eliminar el cliente con id = " + req.params.id,
             error: error.message,
         });
     }

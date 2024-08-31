@@ -23,10 +23,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         telefono: {
-            type: Sequelize.FLOAT
+            type: Sequelize.STRING
         },
         email:{
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         fecha_ingreso:{
             type: Sequelize.DATE
