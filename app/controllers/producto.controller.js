@@ -45,10 +45,17 @@ exports.getProductoById = (req, res) => {
     let productoId = req.params.id;
     Producto.findByPk(productoId)
         .then(producto => {
-            res.status(200).json({
-                message: "Producto obtenido exitosamente con id = " + productoId,
-                producto: producto
-            });
+            if (producto) {
+                res.status(200).json({
+                    message: "Producto obtenido exitosamente con id = " + productoId,
+                    producto: producto
+                });
+            } else {
+                res.status(404).json({
+                    message: "Producto no encontrado con id = " + productoId,
+                    error: "404"
+                });
+            }
         })
         .catch(error => {
             console.log(error);
@@ -76,24 +83,24 @@ exports.updateById = async (req, res) => {
                 stock: req.body.stock,
                 stock_minimo: req.body.stock_minimo,
                 precio_unitario: req.body.precio_unitario
-            }
+            };
             let result = await Producto.update(updatedObject, {returning: true, where: {id_producto: productoId}});
             
             if (!result) {
                 res.status(500).json({
-                    message: "No se puede actualizar un producto con id = " + req.params.id,
+                    message: "No se puede actualizar el producto con id = " + req.params.id,
                     error: "No se pudo actualizar el producto",
                 });
-            };
-
-            res.status(200).json({
-                message: "Actualización exitosa de un producto con id = " + productoId,
-                producto: updatedObject,
-            });
+            } else {
+                res.status(200).json({
+                    message: "Actualización exitosa del producto con id = " + productoId,
+                    producto: updatedObject,
+                });
+            }
         }
     } catch (error) {
         res.status(500).json({
-            message: "No se puede actualizar un producto con id = " + req.params.id,
+            message: "No se puede actualizar el producto con id = " + req.params.id,
             error: error.message
         });
     }
@@ -118,7 +125,7 @@ exports.deleteById = async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({
-            message: "No se puede eliminar un producto con id = " + req.params.id,
+            message: "No se puede eliminar el producto con id = " + req.params.id,
             error: error.message,
         });
     }
