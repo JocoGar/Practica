@@ -6,6 +6,7 @@ const empleadoRouter = require('./app/routers/empleado.router.js');
 const departamentoRouter = require('./app/routers/depto.router.js');
 const clienteRouter = require('./app/routers/cliente.router.js');
 const proveedorRouter = require('./app/routers/proveedor.router.js');
+const productoRouter = require('./app/routers/producto.router.js');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use('/', empleadoRouter);
 app.use('/', departamentoRouter);
 app.use('/', clienteRouter);
 app.use('/', proveedorRouter);
+app.use('/', productoRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenidos UMG" });
