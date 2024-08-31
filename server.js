@@ -4,7 +4,7 @@ const cors = require('cors');
 const db = require('./app/config/db.config.js');
 const empleadoRouter = require('./app/routers/empleado.router.js');
 const departamentoRouter = require('./app/routers/depto.router.js');
-const clienteRouter = require('./app/routes/cliente.router.js');
+const clienteRouter = require('./app/routers/cliente.router.js');
 
 const app = express();
 
