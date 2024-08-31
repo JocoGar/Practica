@@ -4,6 +4,7 @@ const cors = require('cors');
 const db = require('./app/config/db.config.js');
 const empleadoRouter = require('./app/routers/empleado.router.js');
 const departamentoRouter = require('./app/routers/depto.router.js');
+const clienteRouter = require('./app/routes/cliente.router.js');
 
 const app = express();
 
@@ -21,6 +22,7 @@ db.sequelize.sync({ force: false }).then(() => {
 
 app.use('/', empleadoRouter); 
 app.use('/', departamentoRouter);
+app.use('/', clienteRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenidos UMG" });
