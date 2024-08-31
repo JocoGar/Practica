@@ -5,6 +5,7 @@ const db = require('./app/config/db.config.js');
 const empleadoRouter = require('./app/routers/empleado.router.js');
 const departamentoRouter = require('./app/routers/depto.router.js');
 const clienteRouter = require('./app/routers/cliente.router.js');
+const proveedorRouter = require('./app/routers/proveedor.router.js');
 
 const app = express();
 
@@ -23,6 +24,7 @@ db.sequelize.sync({ force: false }).then(() => {
 app.use('/', empleadoRouter); 
 app.use('/', departamentoRouter);
 app.use('/', clienteRouter);
+app.use('/', proveedorRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenidos UMG" });
